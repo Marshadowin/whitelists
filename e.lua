@@ -1,4 +1,4 @@
-    pcall(function()
+  pcall(function()
         local hook; hook = hookmetamethod(game, "__namecall", function(Self,...)
             if not checkcaller() then
                 local getname = getnamecallmethod()
@@ -12,4 +12,22 @@
                 end
             return hook(Self,...)
         end)
-    end)
+	local hooks;
+	hooks = hookmetamethod(game,"__newindex", function(self, k, v)
+		if checkcaller() or not getgenv().FullBright then return hooks(self, k, v) end
+	
+		if self == game.Lighting and k == "Brightness" then
+			return
+		end
+	
+		if self == game.Lighting and k == "GlobalShadows" then
+			return
+		end
+
+		if self == game.Lighting and k == "OutdoorAmbient" then
+			return
+		end
+	
+		return hooks(self, k, v)
+	end)        
+ end)
