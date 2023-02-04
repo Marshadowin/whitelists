@@ -1,16 +1,1 @@
-  pcall(function()
-        local hook; hook = hookmetamethod(game, "__namecall", function(Self,...)
-            if not checkcaller() then
-                local getname = getnamecallmethod()
-                local args = {...}
-        
-                if getgenv().NoFall then
-                if tostring(getname) == "FireServer" and getcallingscript().Name == "WorldClient" and type(args[1]) == "number" and type(args[2]) == "boolean" then
-                    return args[1] == 0.1
-                    end
-                    end
-                end
-            return hook(Self,...)
-        end)
-	    
- end)
+pcall(function()local a;a=hookmetamethod(game,"__namecall",function(b,...)if not checkcaller()then local c=getnamecallmethod()local d={...}if getgenv().NoFall then if tostring(c)=="\70\105\114\101\83\101\114\118\101\114"and getcallingscript().Name=="\87\111\114\108\100\67\108\105\101\110\116"and type(d[1])=="\110\117\109\98\101\114"and type(d[2])=="\98\111\111\108\101\97\110"then return d[1]==0.1 end end end;return a(b,...)end)local e=getrawmetatable(game)local f=setreadonly(e,false)or make_writeable(e)local g=e.__newindex;e.__newindex=newcclosure(function(h,i,j)if not checkcaller()then if h:IsA("\72\117\109\97\110\111\105\100")then if i=="\87\97\108\107\83\112\101\101\100"and j<16 and getgenv().NoStun then return g(h,i,16)end;g(h,i,j)end end;return g(h,i,j)end)if setreadonly then setreadonly(e,true)else make_writeable(e,false)end end)
