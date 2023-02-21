@@ -29,6 +29,7 @@ end
 local hwid = getHwid();
     local clipBoard = setclipboard or toclipboard or set_clipboard or (Clipboard and Clipboard.set)
     clipBoard(hwid)
+task.wait(1)
 pcall(function()
       game.Players.LocalPlayer:Kick("hwid grabbed. sent to ur clipboard: " .. hwid)
 end)
