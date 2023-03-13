@@ -7,8 +7,8 @@ function getHwid()
            ["Syn-Fingerprint"] = ""
        }
     })
-    function getHwid(v15isacutieuwu)
-        headers = v15isacutieuwu.headers
+    function getHwid(b)
+        headers = b.headers
         for i, v in pairs(headers) do
             if string.match(i:lower(),"print") or string.match(i:lower(),"identifier") then
                 return v
